@@ -1,0 +1,24 @@
+{
+  "name": "rest-api-js-mastery",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/droidhazard/rest-api-js-mastery.git"
+  },
+  "keywords": [],
+  "author": "Zohaib Ali",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/droidhazard/rest-api-js-mastery/issues"
+  },
+  "homepage": "https://github.com/droidhazard/rest-api-js-mastery#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
