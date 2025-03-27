@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const router = express.Router();
 
-const users = [
+let users = [
   // {
   //   firstname: "Droid",
   //   lastname: "GameZZ",
@@ -42,4 +42,14 @@ router.get("/:id", (req, res) => {
   res.json({ user: foundUser });
 });
 
+// Delete user
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+  users = users.filter((user) => {
+    if (user.id !== id) {
+      return user;
+    }
+  });
+  res.json(users);
+});
 export default router;
