@@ -1,64 +1,29 @@
 import express from "express";
-import { v4 as uuidv4 } from "uuid";
+import {
+  createUser,
+  getUsers,
+  getUserbyId,
+  deleteUser,
+  updateUser,
+} from "../controllers/users.js";
 
 const router = express.Router();
 
-let users = [
-  // {
-  //   firstname: "Droid",
-  //   lastname: "GameZZ",
-  //   age: 24,
-  // },
-  // {
-  //   firstname: "Zohaib",
-  //   lastname: "Ali",
-  //   age: 13,
-  // },
-];
+let users = [];
 
 // Get all users
-router.get("/", (req, res) => {
-  console.log(users);
-  // res.send("Hello");
-  res.json({ length: users.length, users: users });
-});
+router.get("/", getUsers);
 
 // Create a user
-router.post("/", (req, res) => {
-  const user = req.body;
-  user.id = uuidv4();
-  users.push(user);
-  res.json({ message: "success", user: user });
-});
+router.post("/", createUser);
 
 // Get user by ID
-router.get("/:id", (req, res) => {
-  const { id } = req.params;
-  const foundUser = users.find((user) => {
-    if (user.id === id) {
-      return user;
-    }
-  });
-  res.json({ user: foundUser });
-});
+router.get("/:id", getUserbyId);
 
 // Delete user
-router.delete("/:id", (req, res) => {
-  const { id } = req.params;
-  users = users.filter((user) => {
-    if (user.id !== id) {
-      return user;
-    }
-  });
-  res.json(users);
-});
+router.delete("/:id", deleteUser);
 
 // Update a user
-router.patch("/:id", (req, res) => {
-  const { id } = req.params;
-  const userToUpdate = users.find((user) => user.id == id);
-  const updatedUser = { ...userToUpdate, ...req.body };
-  res.send({ updatedUser });
-  // console.log(userToUpdate);
-});
+router.patch("/:id", updateUser);
+
 export default router;
