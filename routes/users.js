@@ -52,4 +52,13 @@ router.delete("/:id", (req, res) => {
   });
   res.json(users);
 });
+
+// Update a user
+router.patch("/:id", (req, res) => {
+  const { id } = req.params;
+  const userToUpdate = users.find((user) => user.id == id);
+  const updatedUser = { ...userToUpdate, ...req.body };
+  res.send({ updatedUser });
+  // console.log(userToUpdate);
+});
 export default router;
